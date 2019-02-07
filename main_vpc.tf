@@ -49,18 +49,20 @@ resource "aws_elasticsearch_domain" "es_vpc" {
     zone_awareness_enabled   = "${var.es_zone_awareness}"
   }
 
-  # advanced_options {
-  # }
+  log_processing_options = ["${var.log_processing_options}"]
 
   vpc_options = ["${var.vpc_options}"]
+
   ebs_options {
     ebs_enabled = "${var.ebs_volume_size > 0 ? true : false}"
     volume_size = "${var.ebs_volume_size}"
     volume_type = "${var.ebs_volume_type}"
   }
+
   snapshot_options {
     automated_snapshot_start_hour = "${var.snapshot_start_hour}"
   }
+
   tags = "${merge(var.tags, map(
     "Domain", "${var.domain_name}"
   ))}"

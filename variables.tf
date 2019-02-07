@@ -96,5 +96,11 @@ variable "dedicated_master_threshold" {
   default     = 10
 }
 
+variable log_publishing_options {
+  description = "Options for publishing slow logs to CloudWatch Logs."
+  type        = "list"
+  default     = []
+}
+
 # vim: set et fenc=utf-8 ff=unix ft=terraform sts=2 sw=2 ts=2 : 
 

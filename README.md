@@ -49,10 +49,12 @@ None (but `domain_name` and `management_public_ip_addresses` are strongly recomm
 - `snapshot_start_hour` - Hour of the day (in UTC) at which to begin daily snapshots.
 - `tags` - Additional tags to apply to created resources
 - `vpc_options` - VPC related options. Adding or removing this configuration forces a new resource
-
-     `security_group_ids` - List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints.
-
-     `subnet_ids` - List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
+    - `security_group_ids` - List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints.
+    - `subnet_ids` - List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
+- `log_publishing_options` - Options for publishing slow logs to CloudWatch Logs.
+    - `log_type` - (Required) A type of Elasticsearch log. Valid values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
+    - `cloudwatch_log_group_arn` - (Required) ARN of the Cloudwatch log group to which log needs to be published.
+    - `enabled` - (Optional, Default: true) Specifies whether given log publishing option is enabled or not.
 
 Usage
 -----
